@@ -1,6 +1,6 @@
 let userName = prompt('What is your name?').trim();
 let lastName = prompt('What is your last name?').trim();
-let email = prompt('Write your Email please!').trim().toLowerCase().replaceAll(" ","");;
+let email = prompt('Write your Email please!').trim().toLowerCase().replaceAll(" ","");
 let firstMailSymbol, 
     lastMailSymbol, 
     mailData;
