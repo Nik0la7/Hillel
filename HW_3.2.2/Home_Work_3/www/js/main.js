@@ -5,11 +5,5 @@ for (let i = 1; i <= userNumber; i++) {
     for (let n = 1; n <= i; n++) {
         string += n + " ";
     }
-console.log(string);
-
-
-
-
-    // output += i + " ";
-    // console.log(output);
+    console.log(string);
 }
