@@ -5,3 +5,4 @@ function result() {
     console.log(bigArray);
 };
 result();
+
