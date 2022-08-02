@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+}
+.back img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.main_table{
+    max-width: 90%;
+    margin: 0 auto;
+    height: 720px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+.table{
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    min-width: 90%;
+}
+table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+table tr td,
+table tr th{
+    border:3px solid navajowhite;
+}
+table th{
+    min-width: 120px;
+    height: 30px;
+    padding: 0 100px;
+    font-family: 'Abril Fatface', cursive;
+    color: antiquewhite;
+}
+table th p{
+    border: 1px solid;
+    border-radius: 35px;
+    background-color: black;
+    font-size: 20px;
+}
+#author{
+    border: 1px solid;
+    border-radius: 35px;
+    background-color: black;
+    font-size: 25px;
+}
+table td{
+    min-width: 120px;
+    height: 180px;
+    text-align: center;
+    font-family: 'Taviraj', serif;
+    font-size: 30px;
+    color: antiquewhite;
+}
+table td p {
+    width: 300px;
+    font-size: 42px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 35px;
+    background-color: black;
+}
+td img{
+    max-width: 220px;
+    padding: 10px 0;
+}
