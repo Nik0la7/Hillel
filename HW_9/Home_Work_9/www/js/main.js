@@ -75,7 +75,11 @@ function findProduct(catName, arr) {
     });
 };
 
-let body = [`<div class="productPage"><div class="page"><table>`];
+let body = [`<div class="productPage">
+			<div class="page"><table><tr>
+			<td><p>Icon</p></td>
+			<td><p>Name</p></td>
+			<td><p>Price</p></td></tr>`];
 
 findProduct('furniture', furniture);
 findProduct('devices', devices);
