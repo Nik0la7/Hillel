@@ -14,7 +14,7 @@ Vehicle.prototype.toString = function () {
 };
 
 function Car(model, year) {
-    Vehicle.call(this.model, this.year);
+    Vehicle.call(this,model, year);
     this.model = model;
     this.year = year;
     this.numWheels = 4;
@@ -25,7 +25,7 @@ Car.prototype.constructor = Car;
 const car = new Car("Tesla", 2020);
 
 function Motorcycle(model, year) {
-    Vehicle.call(this.model, this.year);
+    Vehicle.call(this,model, year);
     this.model = model
     this.year = year;
     this.numWheels = 2;
@@ -35,16 +35,16 @@ Motorcycle.prototype.constructor = Motorcycle;
 
 const motorcycle = new Motorcycle("Harley-Davidson", 1980);
 
-// console.log(car.model);
-// console.log(car.year);
-// console.log(car.numWheels);
-// console.log(car.start());
-// console.log(car.end());
-// console.log(car.toString());
-// console.log(" ");
-// console.log(motorcycle.model);
-// console.log(motorcycle.year);
-// console.log(motorcycle.numWheels);
-// console.log(motorcycle.start());
-// console.log(motorcycle.end());
-// console.log(motorcycle.toString());
+console.log(car.model);
+console.log(car.year);
+console.log(car.numWheels);
+console.log(car.start());
+console.log(car.end());
+console.log(car.toString());
+console.log(" ");
+console.log(motorcycle.model);
+console.log(motorcycle.year);
+console.log(motorcycle.numWheels);
+console.log(motorcycle.start());
+console.log(motorcycle.end());
+console.log(motorcycle.toString());
