@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 13</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="background">
+        <img src="img/background.jpg" alt="">
+    </div>
+    <div class="to_do_list">
+        <div class="container">
+            <div class="list_body">
+                <div class="list">
+                    <div class="input">
+                        <input type="text" placeholder="Enter your task!" id="task">
+                        <div class="add_btn" type="button" onclick="getTask();">
+                            <img src="img/add_btn.png" alt="">
+                        </div>
+                    </div>
+                    <ul id="local_list">
+                    </ul>
+                </div>
+                <div class="list">
+                    <div class="head">
+                        <span>Task in procces...</span>
+                    </div>
+                    <ul id="process_menu">
+                    </ul>
+                </div>
+                <div class="list">
+                    <div class="head">
+                        <span>Completed task</span>
+                    </div>
+                    <ul id="comlete_menu">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
