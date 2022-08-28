@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+}
+.background{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: fixed;
+}
+.num_option{
+    position: relative;
+    text-align: center;
+    padding-top: 15%;
+}
+.num_option .input,
+.num_option .select,
+.num_option .send_btn{
+    display: inline-block;
+    margin: 0 55px;
+}
+.block_info{
+    width: 500px;
+    height: 200px;
+    background-color: white;
+    position: relative;
+    margin: 35px auto;
+    opacity: 0.3;
+    border-radius: 10px;
+}
+.block_info p{
+    font-size: 18px;
+    text-align: center;
+    padding-top: 15px;
+    color: blue;
+}
+.hide_input{
+    display: none;
+}

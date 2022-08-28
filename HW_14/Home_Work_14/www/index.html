@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 10</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+    <div class="background">
+        <img src="img/background.jpg" alt="">
+    </div>
+    <div class="num_option">
+        <div class="container">
+            <div class="input">
+                <input class="other_input" type="num" onkeypress="getInputNum(event)">
+                <input class="date_input hide_input" type="date" onkeypress="getInputNum(event)">
+
+            </div>
+            <div class="select">
+                <select name="num" id="num">
+                    <option value="trivia">Trivia</option>
+                    <option value="math">Math</option>
+                    <option value="date">Date</option>
+                    <option value="year">Year</option>
+                </select>
+            </div>
+            <div class="send_btn">
+                <button id="SendBtn">Send</button>
+                <button id="RandomBtn">Random</button>
+            </div>
+        </div>
+    </div>
+    <div class="num_info">
+        <div class="container">
+            <div class="block_info">
+
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
