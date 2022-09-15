@@ -1,154 +1,189 @@
 document.querySelector('video').playbackRate = 0.65;
 
-let films;
-let peoples;
-let vehicles;
+let textAreaValue;
+let linkNextPage;
+let itemBlock;
+let imgId;            
+let result; 
+let insert;
+let search;
 
 $('.search_btn').on('click', function(){
     $('.input').toggle(1100);
 });
+
 $('.arrow_btn').on('click', function(){
     $('.list_item').toggle(800);
 });
-// $('.swiper, .mySwiper, .swiper-wrapper, .swiper-pagination').hide();
 
+$('.left_sliderBtn').on('click', function(){
+    $('.item_list').removeClass('item_list_active');
+    $('.show_more').removeClass('show_more_active');
+});
 
-let radioValue;
-let textAreaValue;
+$('.right_sliderBtn').on('click', function(){
+    $('.item_list').removeClass('item_list_active');
+    $('.show_more').removeClass('show_more_active');
+});
 
 $('.send_btn').on('click', function(){
-    // console.log(radioValue);
-    
-    $('.radio_input[name="data"]:checked').val(function() {
-        if(!radioValue){
-            radioValue = this.value;
-        }
-    });
+    itemBlock = '';
+    itemBlock = $('.radio_input[name="data"]:checked').val();
     $('.input_area').val(function(){
         textAreaValue = this.value;
     });
-    // console.log(radioValue);
-    // console.log(textAreaValue);
-    $.ajax({
-        url: `https://swapi.dev/api/${radioValue}/?search=${textAreaValue}`,
-        method: "GET",
-        success: function(result) {
-            swiperDestroy();
-            getResult(result.results);
-            swiperInit();
-        }
-    });
+    if (textAreaValue) {
+        $.ajax({
+            url: `https://swapi.dev/api/${itemBlock}/?search=${textAreaValue}`,
+            method: "GET",
+            success: function(result) {
+                swiperDestroy();
+                addHtml(result.results);
+                swiperInit();
+                enableButton();
+            }
+        });
+    };
     $('.input').hide(1100);
+    search = true;
 });
-
-function getResult(array) {
-    let imgId;
-    let result;
-    array.forEach(element =>  {
-        result = element;
-        imgId = element.url.replace('https://swapi.dev/api/films/', '').replaceAll('/', '');
-        // imgId.replaceAll('/', '')
-        // console.log(imgId);
-        // showRequest();
-    })
-    $('.swiper-wrapper').empty()
-    $('.swiper-wrapper').append(`<div class="slide">
-        <div class="image_wrapper">
-            <div class="image_left">
-                <div class="image" style="background-image: url(img/${radioValue}/${radioValue}${imgId}.png);"></div>
-            </div>
-            <div class="image_right">
-                <div class="image" style="background-image: url(img/${radioValue}/${radioValue}${imgId}.png);"></div>
-
-            </div>
-        </div>
-        <p>${result.title}</p>
-    </div>`);
-
-}
-///////////////////////////////////////////SEARCH////////////////////
-
-let showBtnValue;
-
-let linkNextPage;
 
 $('.schow_btn').on('click', function(){
     $('select').val(function() {
-        showBtnValue = this.value.toLowerCase();
+        itemBlock = this.value.toLowerCase();
         $.ajax({
             url: `https://swapi.dev/api/${this.value.toLowerCase()}`,
             method: "GET",
             success: function(result) {
-                swiperDestroy();
-                getAllResult(result.results);
-                swiperInit();
                 if(result.next){
                     linkNextPage = result.next
+                } else {
+                    linkNextPage = null;
                 }
+                swiperDestroy();
+                $('.swiper-wrapper').empty();
+                addHtml(result.results);
+                swiperInit();
+                enableButton();
             }
         });
         $('.list_item').hide(1100);
     });
-})
-function getAllResult(array){
-    $('.swiper-wrapper').empty();
-    addHtml(array);
-}
+});
 
 function nextPage (page){
-    // let array;
-    // let result;
-    // let imgId
-    $.ajax({
-        url: `${page}`,
-        method: "GET",
-        success: function(result) {
-            // array = result.results;
-            // console.log(array);
-            // console.log("log from new page");
-
-            // array.forEach(element => {
-            // result = element;
-            // imgId = element.url.replace(`https://swapi.dev/api/${showBtnValue}/`, '').replaceAll('/', '');
-            addHtml(result.results);
-                // console.log(element);
-            // })
-
-            if(result.next){
-                linkNextPage = result.next
+    if (linkNextPage) {
+        $.ajax({
+            url: `${page}`,
+            method: "GET",
+            success: function(result) {
+                disableButton();
+                addHtml(result.results);
+                enableButton();
+                linkNextPage = result.next;
             }
-        }
-    });
-    
-}
-
+        });
+    };
+};
 
 function addHtml(array) {
-    console.log(array);
-    let imgId;            
-    let result;      
-    array.forEach(element => {
+    let item = array;
+         if (search) {
+            $('.slider_btn').addClass('hidden');
+            $(swiper).empty();
+            $('.swiper-wrapper').empty();
+            search = false;
+         } else {
+            $('.slider_btn').removeClass('hidden');
+         }
+    item.forEach(element => {
         result = element;
-        imgId = element.url.replace(`https://swapi.dev/api/${showBtnValue}/`, '').replaceAll('/', '');
-        operate();
-
+        imgId = element.url.replace(`https://swapi.dev/api/${itemBlock}/`, '').replaceAll('/', '');
+        operate(element);
     })
-    function operate () {
-        $('.swiper-wrapper').append(`<div class="swiper-slide">
+    function operate (result) {
+        const films = `<div class="item_list">
+    <ul>
+        <li class="list_tittle"><p class="list_tittle">${result.title || result.name}</p></li>
+        <li><p>Director:</p> <p class="parameters">${result.director}</p></li>
+        <li><p>Producer:</p> <p class="parameters">${result.producer}</p></li>
+        <li><p>Release Date:</p> <p class="parameters">${result.release_date}</p></li>
+        <!--<li><p>Characters:</p> <p class="parameters">${result.characters}</p></li>-->
+        <!--<li><p>Vehicles:</p> <p class="parameters">${result.vehicles}</p></li>-->
+    </ul>
+</div> `;
+const people = `<div class="item_list">
+    <ul>
+        <li class="list_tittle"><p class="list_tittle">${result.title || result.name}</p></li>
+        <li><p>Height:</p> <p class="parameters">${result.height}</p></li>
+        <li><p>Mass:</p> <p class="parameters">${result.mass}</p></li>
+        <li><p>Hair Color:</p> <p class="parameters">${result.hair_color}</p></li>
+        <li><p>Birth of Year:</p> <p class="parameters">${result.birth_year}</p></li>
+        <li><p>Gender:</p> <p class="parameters">${result.gender}</p></li>
+        <!--<li><p>Characters:</p> <p class="parameters">${result.characters}</p></li>-->
+        <!--<li><p>Vehicles:</p> <p class="parameters">${result.vehicles}</p></li>-->
+    </ul>
+</div> `;
+const vehicles = `<div class="item_list">
+    <ul>
+        <li class="list_tittle"><p class="list_tittle">${result.title || result.name}</p></li>
+        <li><p>Model:</p> <p class="parameters">${result.model}</p></li>
+        <li><p>Manufacturer:</p> <p class="parameters">${result.manufacturer}</p></li>
+        <li><p>Coast:</p> <p class="parameters">${result.cost_in_credits}</p></li>
+        <li><p>Length:</p> <p class="parameters">${result.length}</p></li>
+        <li><p>Max Speed:</p> <p class="parameters">${result.max_speed}</p></li>
+        <li><p>Crewr:</p> <p class="parameters">${result.crew}</p></li>
+        <li><p>Passengers:</p> <p class="parameters">${result.passengers}</p></li>
+        <!--<li><p>Characters:</p> <p class="parameters">${result.characters}</p></li>-->
+        <!--<li><p>Vehicles:</p> <p class="parameters">${result.vehicles}</p></li>-->
+    </ul>
+</div> `;
+        if(itemBlock === 'films'){
+            insert = films;
+        } else if (itemBlock === 'people') {
+            insert = people;
+        } else if (itemBlock === 'vehicles') {
+            insert = vehicles;
+        }
+        if (swiper) {
+            swiper.appendSlide(`<div class="swiper-slide">
                                     <div class="slide">
                                         <div class="image_wrapper">
                                             <div class="image_left">
-                                                <div class="image" style="background-image: url(img/${showBtnValue}/${showBtnValue}${imgId}.png);"></div>
+                                                <div class="image" style="background-image: url(img/${itemBlock}/${itemBlock}${imgId}.png);"></div>
                                             </div>
                                             <div class="image_right">
-                                                <div class="image" style="background-image: url(img/${showBtnValue}/${showBtnValue}${imgId}.png);"></div>
+                                                <div class="image" style="background-image: url(img/${itemBlock}/${itemBlock}${imgId}.png);"></div>
                                             </div>
                                         </div>
-                                        <p>BODY</p>
-                                    </div>
+                                        <div class="item_tittle">
+                                        <div class="item_tittle"><p>${result.title || result.name}item_tittle
+                                            <div class="show_more">
+                                            <img src="img/other/moreBtn.png" alt="">
+                                            </div>
+                                            <div>${insert}</div>
+                                        </div>
                                 </div>`)
 
-
+        } else {
+            $('.swiper-wrapper').append(`<div class="swiper-slide">
+                                        <div class="slide">
+                                            <div class="image_wrapper">
+                                                <div class="image_left">
+                                                    <div class="image" style="background-image: url(img/${itemBlock}/${itemBlock}${imgId}.png);"></div>
+                                                </div>
+                                                <div class="image_right">
+                                                    <div class="image" style="background-image: url(img/${itemBlock}/${itemBlock}${imgId}.png);"></div>
+                                                </div>
+                                            </div>
+                                            <div class="item_tittle"><p>${result.title || result.name}</p></div>
+                                            <div class="show_more">
+                                                <img src="img/other/moreBtn.png" alt="">
+                                            </div>
+                                            <div>${insert}</div>
+                                        </div>
+                                    </div>`)
+        }
     }
-    
-}
+    insert = '';
+};
