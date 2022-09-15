@@ -157,7 +157,7 @@ const vehicles = `<div class="item_list">
                                             </div>
                                         </div>
                                         <div class="item_tittle">
-                                        <div class="item_tittle"><p>${result.title || result.name}item_tittle
+                                        <div class="item_tittle"><p>${result.title || result.name}</p></div>
                                             <div class="show_more">
                                             <img src="img/other/moreBtn.png" alt="">
                                             </div>
