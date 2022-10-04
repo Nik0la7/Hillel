@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+body,
+.root,
+.Navigation,
+.card, .text-center{
+  min-height: 100vh;
+}
+.card, .text-center{
+  background-color: mintcream;
+}
+
+.card-header{
+  background-color: black;
+  margin-bottom: 20px;
+}
+.nav-item a{
+  text-decoration: none;
+    color: wheat;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px;
+}
+.input-group {
+  width: 90%;
+  margin: 0 auto;
+}
+.list-group-item {
+  width: 90%;
+  margin: 2px auto;
+}
+.itemLi{
+  display: flex;
+  justify-content: space-between;
+}
+.buttons button {
+  position: relative;
+  margin-right: 5px;
+  border-radius: 10px;
+  background-color: ivory;
+  border-color: cornsilk;
+}
+.item span{
+  font-size: 20px;
+  font-family: inherit;
+  letter-spacing: 1px;
+}
