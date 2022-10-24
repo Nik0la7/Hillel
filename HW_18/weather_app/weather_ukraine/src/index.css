@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.root{
+    min-height: 100vh;
+}
+.bg-white {
+    --tw-bg-opacity: 0.68;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.cartImg{
+    height: 255px;
+}
+input[type=text]::placeholder {
+	color: rgb(245, 245, 245);
+}
