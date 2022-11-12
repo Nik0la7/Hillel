@@ -10,7 +10,7 @@ interface filmProps {
   films: IFilms
 }
 
-export default function LatestFilms ({films}: filmProps) {
+const LatestFilms = ({films}: filmProps) => {
 
   const description = films.summary.replaceAll(regex, " ")
 
@@ -42,3 +42,4 @@ export default function LatestFilms ({films}: filmProps) {
     </>
   )
 }
+export default LatestFilms

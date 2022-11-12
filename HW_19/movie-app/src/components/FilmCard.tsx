@@ -6,7 +6,7 @@ interface filmProp {
     film: IFilms
 }
 
-export default function FilmCard({ film }: filmProp) {
+const FilmCard = ({ film }: filmProp) => {
 
 const genres = `${film.genres}' '`;
 
@@ -40,3 +40,4 @@ const genres = `${film.genres}' '`;
     </div>
   )
 }
+export default FilmCard

@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { IActor } from '../models/actorModel'
 
 interface actorProps {
     actor: IActor
 }
 
-export default function ActorsCard({ actor }: actorProps) {
+const ActorsCard = ({ actor }: actorProps) => {
 
   return (
        // {/* <!-- Card Item --> */}
@@ -39,3 +38,4 @@ export default function ActorsCard({ actor }: actorProps) {
    </div>
   )
 }
+export default ActorsCard

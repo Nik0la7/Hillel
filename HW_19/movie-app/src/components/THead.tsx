@@ -3,7 +3,7 @@ import { IEpisodes } from '../models/episodesModel';
 import FilmEpisodes from './FilmEpisodes';
 
 
-export default function THead(array: any) {
+const THead = (array: any) => {
   return (
     <div className="bg-gradient-to-r from-custom-dark-blue to-gray-800 border border-white p-8 rounded-md w-full mt-5">
     <div>
@@ -44,3 +44,4 @@ export default function THead(array: any) {
     </div>
   )
 }
+export default THead

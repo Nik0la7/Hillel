@@ -6,7 +6,7 @@ interface seasonProps {
     season: ISeasons
 }
 
-export default function FilmSeasons({ season }: seasonProps) {
+const FilmSeasons = ({ season }: seasonProps) => {
     
 const poster = season.image?.medium;
 const text = season.summary?.replaceAll(regex, " ")
@@ -37,3 +37,4 @@ const text = season.summary?.replaceAll(regex, " ")
     </>
   )
 }
+export default FilmSeasons

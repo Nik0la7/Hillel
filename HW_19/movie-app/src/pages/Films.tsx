@@ -4,7 +4,7 @@ import FilmCard from '../components/FilmCard';
 import { API_URL } from '../constants/constants';
 import { IFilms } from '../models/filmModel';
 
-export default function Films() {
+const Films = () => {
 const [filmList, setFilmList] = useState([])
 
 async function fetchFilms() {
@@ -31,9 +31,4 @@ useEffect(() => {
     </>
   )
 }
-
-
-
-
-
-
+export default Films

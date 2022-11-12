@@ -6,7 +6,7 @@ interface episodesProps{
     episodes: IEpisodes
 }
 
-export default function FilmEpisodes({ episodes }: episodesProps) {
+const FilmEpisodes = ({ episodes }: episodesProps) => {
 	const text = episodes.summary?.replaceAll(regex, " ")
     
   return (
@@ -49,6 +49,7 @@ export default function FilmEpisodes({ episodes }: episodesProps) {
 	</tr>
   )
 }
+export default FilmEpisodes
 
 
 

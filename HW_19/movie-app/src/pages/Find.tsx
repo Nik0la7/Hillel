@@ -10,7 +10,7 @@ import { IFind } from '../models/findModel';
 import { IPerson } from '../models/personModel';
 import { ISeasons } from '../models/seasonModel';
 
-export default function Find() {
+const Find = () => {
   const params = useParams()
   const linkElement: any= params.valueInput;
   const [value, setValue] = useState('')
@@ -237,3 +237,4 @@ fetchEpisode()
 </>
   )
 }
+export default Find

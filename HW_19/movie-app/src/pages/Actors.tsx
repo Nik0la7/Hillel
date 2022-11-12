@@ -4,7 +4,7 @@ import ActorsCard from '../components/ActorsCard';
 import { PEOPLE_URL } from '../constants/constants';
 import { IActor } from '../models/actorModel';
 
-export default function Actors() {
+const Actors = () => {
 const [actorsList, setActorsList] = useState([])
 const [spinnerStatus, setSpinnerStatus] = useState(false) 
 
@@ -46,3 +46,4 @@ useEffect(() => {
         </>
   )
 }
+export default Actors

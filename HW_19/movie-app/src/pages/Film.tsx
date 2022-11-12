@@ -9,7 +9,7 @@ import { IPerson } from '../models/personModel';
 import { ISeasons } from '../models/seasonModel';
 import { IShows } from '../models/showsModel';
 
-export default function Film() {
+const Film = () => {
   const params = useParams();
   const [showName, setShowName] = useState('');
   const [poster, setPoster] = useState('');
@@ -198,3 +198,4 @@ fetchEpisode()
     </>
   )
 }
+export default Film

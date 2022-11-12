@@ -13,7 +13,7 @@ import Find from '../pages/Find';
 import Film from '../pages/Film';
 
 
-export default function Header() {
+const Header = () => {
   const [activeBtn, setActiveBtn] = useState(false)
   const [valueInput, setValueInput] = useState('')
 
@@ -78,6 +78,7 @@ const inputLength: any = (Event: any) => {
   </Router>
   )
 }
+export default Header
 
 
 

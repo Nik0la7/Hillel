@@ -5,7 +5,7 @@ interface actorProps {
     actors: IPerson
 }
 
-export default function FilmActors({actors}: actorProps) {
+const FilmActors = ({actors}: actorProps) => {
 
   return (
     <div className="lg:flex border border-white rounded-3xl" >
@@ -22,6 +22,7 @@ export default function FilmActors({actors}: actorProps) {
     </div>
   )
 }
+export default FilmActors
 
 
 

@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import { API_URL } from '../constants/constants';
 
-export default function Home() {
+const Home = () => {
   const [films, setFilms] = useState([])
   const topFilms: any= [];
   SwiperCore.use([Autoplay])
@@ -59,3 +59,4 @@ export default function Home() {
   </>
   )
 }
+export default Home
